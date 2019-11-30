@@ -1,0 +1,21 @@
+{
+  "name": "pokerbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "sec": "node sec.js",
+    "third": "node third.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "phe": "^0.6.0",
+    "pokersolver": "^2.1.3",
+    "robot3": "^0.2.2"
+  },
+  "devDependencies": {
+    "javascript-state-machine": "^3.1.0"
+  }
+}
