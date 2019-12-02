@@ -13,6 +13,16 @@ class Table {
 			position++;
 		});
 	}
+
+	removePlayer(playerId) {
+		this.players.filter(player => {
+			return player.playerId != playerId;
+		});
+	}
+
+	addPlayer(newPlayer) {
+		this.players.push(newPlayer);
+	}
 }
 
 module.exports = Table;

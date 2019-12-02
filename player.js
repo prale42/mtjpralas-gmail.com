@@ -5,6 +5,7 @@ class Player {
 		this.name = name;
 		this.chips = chips;
 		this.active = active;
+		this.playerId;
 	}
 
 	setHand(hand) {
