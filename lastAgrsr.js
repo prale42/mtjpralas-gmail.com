@@ -1,7 +1,7 @@
 class LastAgrsr {
-	constructor(position, raiseAmount) {
-		this.position = position;
-		this.raiseAmount = raiseAmount;
+	constructor() {
+		this.position;
+		this.raiseAmount;
 	}
 }
 

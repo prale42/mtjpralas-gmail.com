@@ -15,13 +15,11 @@ const gameState = StateMachine.factory({
 		{ name: "toRiver", from: "TURN", to: "RIVER" }
 	],
 
-	data: {
-		game: "I am the game, I am not lame"
-	},
+	data: {},
 	//TODO: make the methods/functions do something solid
 	methods: {
 		onToReset: () => console.log("I was reset"),
-		onToPreflop: () => console.log("I am the game, I am not lame"),
+		onToPreflop: () => console.log("I came to the preflop"),
 		onToFlop: () => console.log("I came to the flop"),
 		onToTurn: () => console.log("I came to the turn"),
 		onToRiver: () => console.log("I came to the river")

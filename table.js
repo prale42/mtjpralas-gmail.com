@@ -14,14 +14,22 @@ class Table {
 		});
 	}
 
-	removePlayer(playerId) {
-		this.players.filter(player => {
-			return player.playerId != playerId;
-		});
+	rotatePositions() {
+		let first = this.players[0];
+		this.players.shift();
+		this.players.push(first);
 	}
 
 	addPlayer(newPlayer) {
 		this.players.push(newPlayer);
+	}
+
+	setPlayerIds() {
+		let id = 0;
+		this.players.forEach(player => {
+			player.playerId = id;
+			id++;
+		});
 	}
 }
 
