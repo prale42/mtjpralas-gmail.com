@@ -19,16 +19,17 @@ class Game {
 		this.choiceNum = 0; // a pointer to the index of the next decision, purely for testing
 		this.choices; //array of choices that are to happen on a street
 		this.nextPlayerId;
+		this.positionOfPlayersById = []; //we will rotate the array of player Ids instead of the player array for better memory managment
 	}
 
 	initRound() {
 		const currentState = this.gameState.state;
 		switch (currentState) {
 			case "RESET":
-				this.setActivePlayers();
+				this.table.setInitialPositions();
+				this.setActivePlayersIds();
 				console.log("I am at reset state");
 			case "PREFLOP":
-				this.table.setPositions();
 				this.potSize = 0;
 				this.prevAgrsr = true;
 				this.posOfActive = 2;
@@ -56,13 +57,32 @@ class Game {
 	}
 
 	//creates an array of active players' Ids
-	setActivePlayers() {
-		this.activePlayersIds = [];
-		this.table.players.forEach(player => {
+	setActivePlayersIds() {
+		let activePlayersIds = [];
+		this.table.players.forEach((player) => {
 			if (player.active) {
-				this.activePlayersIds.push(player);
+				activePlayersIds.push(player.id);
 			}
 		});
+		this.activePlayersIds = activePlayersIds;
+	}
+	/*
+	@positionOfPlayersByIds
+	Id represents the player, index of Id represents the player position
+	*/
+	setPlayerPositionsById() {
+		let idPosition = [];
+		this.table.players.forEach((player) => {
+			idPosition.push(player.id);
+		});
+		this.positionOfPlayersById = idPosition;
+	}
+
+	rotatePositions() {
+		const firstId = this.positionOfPlayersById[0];
+		this.positionOfPlayersById.shift();
+		this.positionOfPlayersById.push(firstId);
+		this.table.setPositionsByIds(this.positionOfPlayersById);
 	}
 }
 module.exports = Game;

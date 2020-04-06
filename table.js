@@ -4,18 +4,28 @@ class Table {
 	constructor(players) {
 		this.players = players;
 		this.deck = new Deck();
-		this.setPositions();
+		this.setInitialPositions();
 	}
-	setPositions() {
+	setInitialPositions() {
 		let position = 0; //position 0 is SB, position 5 is BTN (for 6max games)
-		this.players.forEach(player => {
+		this.players.forEach((player) => {
 			player.setPosition(position);
 			position++;
 		});
 	}
 
+	setPositionsByIds(positionOfPlayersByIds) {
+		this.players.forEach((player) => {
+			positionOfPlayersByIds.forEach((id) => {
+				if (player.id === id) {
+					player.position = positionOfPlayersByIds.indexOf(id);
+				}
+			});
+		});
+	}
+
 	rotatePositions() {
-		let first = this.players[0];
+		const first = this.players[0];
 		this.players.shift();
 		this.players.push(first);
 	}
@@ -26,7 +36,7 @@ class Table {
 
 	setPlayerIds() {
 		let id = 0;
-		this.players.forEach(player => {
+		this.players.forEach((player) => {
 			player.playerId = id;
 			id++;
 		});

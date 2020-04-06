@@ -6,7 +6,7 @@ const { gameState } = require("./gameState");
 const playerNames = ["marko", "ivan", "laki", "jaran", "mirkecNe", "malnar"];
 const chips = 2000;
 let players = [];
-playerNames.forEach(playerName =>
+playerNames.forEach((playerName) =>
 	players.push(new Player(playerName, chips, true))
 );
 const game1 = new Game(new Table(players), 100);
@@ -15,16 +15,19 @@ game1.initRound();
 
 console.log(game1.table.players);
 
-game1.table.rotatePositions();
-
+//game1.table.rotatePositions();
+game1.setPlayerPositionsById();
+console.log(game1.positionOfPlayersById);
+game1.rotatePositions();
 console.log("------------------after rotate----------------");
-
-console.log("\n\n\n\n");
+console.log(game1.positionOfPlayersById);
+console.log("\n\n");
 console.log(game1.table.players);
 game1.table.players[2].active = false;
-game1.setActivePlayers();
-console.log("--------------after player unactive-------------");
-console.log(game1.activePlayersIds);
+//game1.setActivePlayersIds();
+
+//console.log("--------------after player unactive-------------");
+//console.log(game1.table.players);
 
 /*  testiranje rotiranja pozicija
 console.log(game1.table.players);
